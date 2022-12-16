@@ -5,25 +5,18 @@
 namespace TestStore.Migrations
 {
     /// <inheritdoc />
-    public partial class modifyProductModel : Migration
+    public partial class modifyCategoryMedel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "CatId",
-                table: "Product",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "CatId",
-                table: "Product");
+
         }
     }
 }

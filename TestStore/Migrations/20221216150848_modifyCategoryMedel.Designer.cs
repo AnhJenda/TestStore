@@ -12,8 +12,8 @@ using TestStore.Data;
 namespace TestStore.Migrations
 {
     [DbContext(typeof(TestStoreContext))]
-    [Migration("20221215023213_initCreate")]
-    partial class initCreate
+    [Migration("20221216150848_modifyCategoryMedel")]
+    partial class modifyCategoryMedel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,7 +148,7 @@ namespace TestStore.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -200,7 +200,9 @@ namespace TestStore.Migrations
                 {
                     b.HasOne("TestStore.Models.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
